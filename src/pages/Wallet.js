@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Wallet extends React.Component {
   render() {
     return (
-      <div>TrybeWallet</div>
+      <div>Wallet</div>
     );
   }
 }
