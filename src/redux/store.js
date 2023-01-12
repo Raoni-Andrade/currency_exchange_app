@@ -11,8 +11,6 @@ const store = createStore(
   ),
 );
 
-// createStore(rootReducer, composeWithDevTools());
-
 if (window.Cypress) {
   window.store = store;
 }

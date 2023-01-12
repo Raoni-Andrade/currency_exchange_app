@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import getCurrencies from '../services/currenciesAPI';
 
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
     return (
       <>
-        <div>Header</div>
         <h5 data-testid="email-field">
           User email:
           {' '}
@@ -20,7 +20,10 @@ class Header extends Component {
           0
           { expenses }
           {' '}
-          <span data-testid="header-currency-field">BRL</span>
+          <span data-testid="header-currency-field">
+            BRL
+          </span>
+          {/* {getCurrencies()} */}
         </h5>
       </>
     );
