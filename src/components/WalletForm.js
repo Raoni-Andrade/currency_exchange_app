@@ -10,7 +10,7 @@ class WalletForm extends Component {
   constructor() {
     super();
     this.state = {
-      valor: 0,
+      valor: '',
       moeda: 'USD',
       metodo: 'Dinheiro',
       tag: 'Alimentação',
@@ -172,6 +172,10 @@ WalletForm.defaultProps = {
 
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,
+  ask: globalState.wallet.exchangeRates,
+  edit: globalState.wallet.editor,
+  expenses: globalState.wallet.expenses,
+  idToEdit: globalState.wallet.idToEdit,
 });
 
 export default connect(mapStateToProps)(WalletForm);

@@ -3,7 +3,8 @@ import { ADD_WALLET_INFO,
   REQUEST_CURRENCIES,
   SUM_EXPENSES,
   REQUEST_CURRENCIES_SUCCESS,
-  REQUEST_CURRENCIES_ERROR } from '../actions';
+  REQUEST_CURRENCIES_ERROR,
+  DELETE_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -43,6 +44,12 @@ const walletReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       value: action.payload,
+    };
+  case DELETE_EXPENSES:
+    console.log(action.payload);
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== action.payload),
     };
   default: return state;
   }

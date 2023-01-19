@@ -7,6 +7,8 @@ export const REQUEST_CURRENCIES = 'REQUEST_CURRENCIES';
 export const SUM_EXPENSES = 'SUM_EXPENSES';
 export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
 export const REQUEST_CURRENCIES_ERROR = 'REQUEST_CURRENCIES_ERROR';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
+export const EDIT_EXPENSES = 'EDIT_EXPENSES';
 
 export const addUser = (payload) => {
   console.log('ACTION addUser chamada');
@@ -53,17 +55,27 @@ export const sumExpenses = (expenses) => ({
   payload: expenses,
 });
 
-const priceAtTheMoment = async (dispatch) => {
-  // dispatch(requestCurrencies());
-  try {
-    // requisição;
-    const fetchingApi = await getCurrencies();
-    return await dispatch(requestCurrenciesSuccess(fetchingApi));
-  } catch (error) {
-    // criar action para tratamento de erro
-    return dispatch(requestCurrenciesError(error));
-  }
-};
+export const deleteExpenses = (expenseId) => ({
+  type: DELETE_EXPENSES,
+  payload: expenseId,
+});
+
+export const editExpenses = (expenseId) => ({
+  type: EDIT_EXPENSES,
+  payload: expenseId,
+});
+
+// const priceAtTheMoment = async (dispatch) => {
+//   // dispatch(requestCurrencies());
+//   try {
+//     // requisição;
+//     const fetchingApi = await getCurrencies();
+//     return await dispatch(requestCurrenciesSuccess(fetchingApi));
+//   } catch (error) {
+//     // criar action para tratamento de erro
+//     return dispatch(requestCurrenciesError(error));
+//   }
+// };
 
 const currencyValue = async (dispatch) => {
   try {
