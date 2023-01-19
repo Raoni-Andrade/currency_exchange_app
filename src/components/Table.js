@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Table extends Component {
   render() {
-    // const { expenses, currency, exchangeRates } = this.props;
+    const { expenses } = this.props;
     // console.log('EXPENSES ARRAY: ', expenses);
     return (
       <div>
@@ -55,7 +55,7 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  // expenses: Proptypes.arrayOf(Proptypes.objectOf).isRequired,
+  expenses: Proptypes.arrayOf(Proptypes.objectOf).isRequired,
   // exchangeRates:
   // dispatch: Proptypes.func.isRequired,
 };
