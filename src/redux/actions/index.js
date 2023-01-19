@@ -9,6 +9,7 @@ export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
 export const REQUEST_CURRENCIES_ERROR = 'REQUEST_CURRENCIES_ERROR';
 export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 export const EDIT_EXPENSES = 'EDIT_EXPENSES';
+export const SAVE_EDIT = 'SAVE_EDIT';
 
 export const addUser = (payload) => {
   console.log('ACTION addUser chamada');
@@ -63,6 +64,11 @@ export const deleteExpenses = (expenseId) => ({
 export const editExpenses = (expenseId) => ({
   type: EDIT_EXPENSES,
   payload: expenseId,
+});
+
+export const saveEdited = (expenses) => ({
+  type: SAVE_EDIT,
+  payload: expenses,
 });
 
 // const priceAtTheMoment = async (dispatch) => {

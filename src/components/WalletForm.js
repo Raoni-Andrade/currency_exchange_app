@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import getCurrencies from '../services/currenciesAPI';
 import { actionFetching,
   addWallet,
+  saveEdited,
   sumExpenses } from '../redux/actions';
 
 class WalletForm extends Component {
@@ -71,12 +72,32 @@ class WalletForm extends Component {
     });
   };
 
+  saveEdit = () => {
+    const { expenses, dispatch, idToEdit } = this.props;
+    const { valor, description, moeda, metodo, tag } = this.state;
+
+    const expensesList = expenses.map((expense) => {
+      if (expense.id === idToEdit) {
+        return {
+          ...expense,
+          value: valor,
+          currency: moeda,
+          method: metodo,
+          description,
+          tag,
+        };
+      }
+      return expense;
+    });
+    dispatch(saveEdited(expensesList));
+  };
+
   // currencyExchange = async () =>
   // const { currency } = this.state;
   // const endpoint = `https://economia.awesomeapi.com.br/json/${currency}`
 
   render() {
-    const { currencies } = this.props;
+    const { currencies, edit } = this.props;
     const { valor, moeda, metodo, tag, description } = this.state;
     // console.log(currencies);
     return (
@@ -149,9 +170,9 @@ class WalletForm extends Component {
           </label>
           <button
             type="button"
-            onClick={ this.btnClick }
+            onClick={ !edit ? this.btnClick : this.saveEdit }
           >
-            Adicionar despesa
+            { !edit ? 'Adicionar despesa' : 'Editar despesa' }
           </button>
         </form>
       </>
@@ -162,13 +183,8 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string),
   dispatch: PropTypes.func.isRequired,
-  // requestJson: PropTypes.func,
-};
-
-WalletForm.defaultProps = {
-  // requestJson: PropTypes.func,
-  currencies: PropTypes.arrayOf(PropTypes.string),
-};
+  expenses: PropTypes.array,
+}.isRequired;
 
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,

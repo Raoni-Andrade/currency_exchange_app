@@ -4,7 +4,9 @@ import { ADD_WALLET_INFO,
   SUM_EXPENSES,
   REQUEST_CURRENCIES_SUCCESS,
   REQUEST_CURRENCIES_ERROR,
-  DELETE_EXPENSES } from '../actions';
+  DELETE_EXPENSES,
+  EDIT_EXPENSES,
+  SAVE_EDIT } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -39,8 +41,6 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       error: action.payload.error,
     };
   case SUM_EXPENSES:
-    // console.log('TESTE SUM_EXPENSES action.payload ', action.payload);
-    // console.log('TESTE state.wallet.value ', state);
     return {
       ...state,
       value: action.payload,
@@ -50,6 +50,18 @@ const walletReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter((expense) => expense.id !== action.payload),
+    };
+  case EDIT_EXPENSES:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
+    };
+  case SAVE_EDIT:
+    return {
+      ...state,
+      editor: false,
+      expenses: action.payload,
     };
   default: return state;
   }
