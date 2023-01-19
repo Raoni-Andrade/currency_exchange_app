@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Table extends Component {
   render() {
     const { expenses } = this.props;
-    // console.log('EXPENSES ARRAY: ', expenses);
+    console.log('EXPENSES ARRAY: ', expenses);
     return (
       <div>
         <span>
@@ -28,13 +28,19 @@ class Table extends Component {
           <tbody>
             { expenses.length > 0 && expenses.map((expense) => (
 
-              <tr className="table-primary" key={ expense.idToEdit }>
+              <tr className="table-primary" key={ expense.id }>
                 <td>{ expense.description }</td>
                 <td>{ expense.tag }</td>
                 <td>{ expense.method }</td>
-                <td>{ expense.value }</td>
-                <td>{ expense.currency }</td>
                 <td>{ Number(expense.value).toFixed(2) }</td>
+                <td>{ expense.exchangeRates[expense.currency].name }</td>
+                <td>{ (+expense.exchangeRates[expense.currency].ask).toFixed(2) }</td>
+                <td>
+                  { Number(+expense.value
+                  * expense.exchangeRates[expense.currency].ask).toFixed(2)}
+
+                </td>
+                <td>Real</td>
                 {/* <td>{ expense.exchangeRates[expense.currency].name }</td> */}
                 {/* <td>{ Number(exchangeRates[currency].ask).toFixed(2) }</td> */}
                 {/* <td>{ (value * exchangeRates[currency].ask).toFixed(2) }</td> */}
