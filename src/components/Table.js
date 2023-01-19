@@ -1,4 +1,4 @@
-// import Proptypes from 'prop-types';
+import Proptypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
