@@ -68,7 +68,7 @@ class Login extends React.Component {
     const { email, password, isBtnDisabled } = this.state;
     return (
       <>
-        <div>Login</div>
+        <h1>Login</h1>
         <div>
           Email
           <input
@@ -108,7 +108,9 @@ class Login extends React.Component {
 }
 
 Login.propTypes = ({
-  history: PropTypes.shape(),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
   dispatch: PropTypes.func,
 }).isRequired;
 

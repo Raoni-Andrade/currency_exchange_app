@@ -10,7 +10,7 @@ class Header extends Component {
     const totalSum = wallet.reduce((acc, curr) => acc
     + (curr.value * curr.exchangeRates[curr.currency].ask
     ), 0);
-    console.log(totalSum);
+    // console.log(totalSum);
 
     return (
       <>
