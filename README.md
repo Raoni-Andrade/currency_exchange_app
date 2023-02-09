@@ -31,5 +31,3 @@
 
 - [Trybe Course](https://www.betrybe.com/)
 <br/>
-
-<h5> Folder "Services" Created By Trybe. </h5>
