@@ -1,13 +1,35 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+<h1>TrybeWallet 💰</h1>  
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+<div>
+<h2> About: </h2><p>A virtual wallet to track your expenses with a real-time currency converter, which is possible for you to add, remove or edit expenses and convert your spendings to any desired currency with a real-time exchange rate. An all those informations displayed in a beautiful table.</p>
+</div>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+<h2>:rocket: Available features: </h2>
+
+<ul> 
+<li>Log in; </li>
+<li>Add, remove or edit an expense; </li>
+<li>Listing of expenses in a table; </li>
+<li>Real-time currency converter; </li>
+
+</ul>
+
+<h2>💻 Technologies used: </h2>
+
+<ul>
+<li>CSS; </li>
+<li>JS; </li>
+<li>React; </li>
+<li>Redux; </li>
+<li>API Requests; </li>
+<li>Async actions in Redux; </li>
+</ul>
+
+</br>
+
+<h4>Acknowledgements: </h4>
+
+- [Trybe Course](https://www.betrybe.com/)
+<br/>
+
+<h5> Folder "Services" Created By Trybe. </h5>
