@@ -6,8 +6,9 @@
 
 <h2>:eye_speech_bubble: Preview: </h2>
 
-![Screenshot from 2023-02-09 17-48-34](https://user-images.githubusercontent.com/108954035/217936379-ec5356ca-a488-44c6-9561-ff4c28d1a600.png)
 ![Screenshot from 2023-02-09 17-46-08](https://user-images.githubusercontent.com/108954035/217936381-cd835018-edd5-4f0f-b490-c9e7ebfe86ba.png)
+![Screenshot from 2023-02-09 17-48-34](https://user-images.githubusercontent.com/108954035/217936379-ec5356ca-a488-44c6-9561-ff4c28d1a600.png)
+
 
 <h2>:rocket: Available features: </h2>
 <ul> 
