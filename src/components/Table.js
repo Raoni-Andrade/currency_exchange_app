@@ -6,7 +6,6 @@ import { deleteExpenses, editExpenses } from '../redux/actions';
 class Table extends Component {
   deleteExpense = (expenseId) => {
     const { dispatch } = this.props;
-    // console.log(expenseId);
     dispatch(deleteExpenses(expenseId));
   };
 
@@ -17,24 +16,20 @@ class Table extends Component {
 
   render() {
     const { expenses } = this.props;
-    // console.log('EXPENSES ARRAY: ', expenses);
     return (
       <div>
-        <span>
-          WALLET TABLE
-        </span>
-        <table>
-          <thead>
+        <table className="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead className="thead">
             <tr>
-              <th>Descrição</th>
+              <th>Description</th>
               <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
+              <th>Payment method</th>
+              <th>Value</th>
+              <th>Currency</th>
+              <th>Exchange rate</th>
+              <th>Value converted</th>
+              <th>Converting to</th>
+              <th>Edit/Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -57,16 +52,18 @@ class Table extends Component {
                   <button
                     data-testid="edit-btn"
                     type="button"
+                    className="material-symbols-outlined is-hoverable"
                     onClick={ () => this.editExpense(expense.id) }
                   >
-                    Editar despesa
+                    Edit
                   </button>
                   <button
                     data-testid="delete-btn"
+                    className="material-symbols-outlined is-hoverable"
                     type="button"
                     onClick={ () => this.deleteExpense(expense.id) }
                   >
-                    Deletar
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -80,7 +77,6 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: Proptypes.arrayOf(Proptypes.objectOf).isRequired,
-  // exchangeRates:
   dispatch: Proptypes.func.isRequired,
 };
 

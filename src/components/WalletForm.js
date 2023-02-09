@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -13,8 +14,8 @@ class WalletForm extends Component {
     this.state = {
       valor: '',
       moeda: 'USD',
-      metodo: 'Dinheiro',
-      tag: 'Alimentação',
+      metodo: 'Cash',
+      tag: 'Food',
       description: '',
       id: 0,
     };
@@ -30,7 +31,7 @@ class WalletForm extends Component {
 
     this.setState({
       [name]: value,
-    } /* , () => console.log('NOME: ', name, 'VALOR: ', value, 'ALVO: ', target) */);
+    });
   };
 
   btnClick = async () => {
@@ -41,12 +42,7 @@ class WalletForm extends Component {
       tag,
       description,
       id } = this.state;
-    // const currencyApi = await dispatch(actionFetching());
     const chamandoAPI = await getCurrencies();
-    // console.log(chamandoAPI.requestJson);
-    // const getCurrenciess = await dispatch(rates());
-    // console.log(currencyApi.payload);
-    // console.log(getCurrenciess.payload.requestJson.exchangeRates);
     this.setState({
       id: id + 1,
     }, () => {
@@ -66,9 +62,8 @@ class WalletForm extends Component {
       valor: '',
       description: '',
       moeda: 'USD',
-      metodo: 'Dinheiro',
-      tag: 'Alimentação',
-      // exchangeRates: getCurrenciess.payload.requestJson.exchangeRates,
+      metodo: 'Cash',
+      tag: 'Food',
     });
   };
 
@@ -92,90 +87,143 @@ class WalletForm extends Component {
     dispatch(saveEdited(expensesList));
   };
 
-  // currencyExchange = async () =>
-  // const { currency } = this.state;
-  // const endpoint = `https://economia.awesomeapi.com.br/json/${currency}`
-
   render() {
-    const { currencies, edit } = this.props;
+    const { currencies, editor } = this.props;
     const { valor, moeda, metodo, tag, description } = this.state;
-    // console.log(currencies);
     return (
-      <>
-        <div>WalletForm</div>
-        <form>
-          <label htmlFor="value-input">
-            Expense value:
-            {' '}
-            <input
-              data-testid="value-input"
-              id="value-input"
-              name="valor"
-              onChange={ this.handleInputChange }
-              value={ valor }
-              type="number"
-            />
-          </label>
-          <label htmlFor="description-input">
-            Expense description:
-            <input
-              data-testid="description-input"
-              id="description-input"
-              name="description"
-              value={ description }
-              onChange={ this.handleInputChange }
-            />
-          </label>
-          Currency:
-          <select
-            id="currency"
-            name="moeda"
-            data-testid="currency-input"
-            onChange={ this.handleInputChange }
-            value={ moeda }
+      <form className="formWallet box is-flex">
+        <fieldset className="field has-addons is-flex">
+          <div className="control">
+            <label htmlFor="value-input label">
+              Value:
+              {' '}
+              <div className="control">
+                <input
+                  className="input is-link is-rounded"
+                  data-testid="value-input"
+                  id="value-input"
+                  name="valor"
+                  onChange={ this.handleInputChange }
+                  value={ valor }
+                  type="text"
+                />
+              </div>
+            </label>
+          </div>
+          <div className="field mr-5">
+            <label className="label" htmlFor="currency">
+              Currency:
+              <div className="control">
+                <div className="select">
+                  <select
+                    id="currency"
+                    name="moeda"
+                    data-testid="currency-input"
+                    onChange={ this.handleInputChange }
+                    value={ moeda }
+                  >
+                    { currencies.map((curr, index) => (
+                      <option key={ index } value={ curr }>{ curr }</option>
+                    )) }
+                  </select>
+                </div>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="dropdown is-hoverable mr-5">
+            <div className="trigger">
+              <label htmlFor="description-input">
+                Description:
+                <div className="control">
+                  <input
+                    className="input is-info"
+                    data-testid="description-input"
+                    id="description-input"
+                    name="description"
+                    value={ description }
+                    onChange={ this.handleInputChange }
+                  />
+                </div>
+              </label>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu4" role="menu">
+              <div className="dropdown-content">
+                <div className="dropdown-item">
+                  <p>
+                    A brief description about
+                    {' '}
+                    the expense
+                    {' '}
+                    <strong>so you won&apos;t forget later</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div
+            className="field is-grouped is-grouped-multiline
+        is-flex-direction-row is-align-items-center"
           >
-            { currencies.map((curr, index) => (
-              <option key={ index } value={ curr }>{ curr }</option>
-            )) }
-          </select>
-          <label htmlFor="method">
-            Payment method:
-            <select
-              data-testid="method-input"
-              id="method"
-              name="metodo"
-              value={ metodo }
-              onChange={ this.handleInputChange }
-            >
-              <option value="Dinheiro">Dinheiro</option>
-              <option value="Cartão de crédito">Cartão de crédito</option>
-              <option value="Cartão de débito">Cartão de débito</option>
-            </select>
-          </label>
-          <label htmlFor="tag">
-            Expense tag:
-            <select
-              data-testid="tag-input"
-              id="tag"
-              name="tag"
-              value={ tag }
-              onChange={ this.handleInputChange }
-            >
-              <option value="Alimentação">Alimentação</option>
-              <option value="Lazer">Lazer</option>
-              <option value="Trabalho">Trabalho</option>
-              <option value="Transporte">Transporte</option>
-              <option value="Saúde">Saúde</option>
-            </select>
-          </label>
-          <button
-            type="button"
-            onClick={ !edit ? this.btnClick : this.saveEdit }
-          >
-            { !edit ? 'Adicionar despesa' : 'Editar despesa' }
-          </button>
-        </form>
-      </>
+
+            <div className="field mr-5">
+              <label className="label" htmlFor="method">
+                Payment method:
+                <div className="control">
+                  <div className="select">
+                    <select
+                      data-testid="method-input"
+                      id="method"
+                      name="metodo"
+                      value={ metodo }
+                      onChange={ this.handleInputChange }
+                    >
+                      <option value="Cash">Cash</option>
+                      <option value="Credid card">Credid card</option>
+                      <option value="Debit card">Debit card</option>
+                    </select>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div className="field mr-5">
+              <label className="label" htmlFor="tag">
+                Tag:
+                <div className="control">
+                  <div className="select">
+                    <select
+                      data-testid="tag-input"
+                      id="tag"
+                      name="tag"
+                      value={ tag }
+                      onChange={ this.handleInputChange }
+                    >
+                      <option value="Food">Food</option>
+                      <option value="Leisure">Leisure</option>
+                      <option value="Work">Work</option>
+                      <option value="Transportation">Transportation</option>
+                      <option value="Health">Health</option>
+                    </select>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div className="">
+              <button
+                type="button"
+                className={ !editor ? 'button is-success is-hoverable'
+                  : 'button is-warning is-hoverable' }
+                onClick={ !editor ? this.btnClick : this.saveEdit }
+              >
+                { !editor ? 'Add expense' : 'Edit expense' }
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
     );
   }
 }
@@ -189,7 +237,7 @@ WalletForm.propTypes = {
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,
   ask: globalState.wallet.exchangeRates,
-  edit: globalState.wallet.editor,
+  editor: globalState.wallet.editor,
   expenses: globalState.wallet.expenses,
   idToEdit: globalState.wallet.idToEdit,
 });

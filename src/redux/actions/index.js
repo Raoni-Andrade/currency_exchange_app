@@ -11,16 +11,13 @@ export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 export const EDIT_EXPENSES = 'EDIT_EXPENSES';
 export const SAVE_EDIT = 'SAVE_EDIT';
 
-export const addUser = (payload) => {
-  console.log('ACTION addUser chamada');
-  return {
-    type: ADD_USER_INFO,
-    payload,
-  };
-};
+export const addUser = (payload) => ({
+  type: ADD_USER_INFO,
+  payload,
+});
 
 export const addWallet = (payload) => {
-  console.log('ACTION addWallet chamada');
+  console.log();
   return {
     type: ADD_WALLET_INFO,
     payload,
@@ -28,7 +25,7 @@ export const addWallet = (payload) => {
 };
 
 export const requestCurrencies = (payload) => {
-  console.log('ACTION requestCurrencies chamada');
+  console.log();
   return {
     type: REQUEST_CURRENCIES,
     payload,
@@ -36,20 +33,17 @@ export const requestCurrencies = (payload) => {
 };
 
 export const requestCurrenciesSuccess = (payload) => {
-  console.log('ACTION requestCurrenciesSuccess chamada');
+  console.log();
   return {
     type: REQUEST_CURRENCIES_SUCCESS,
     payload,
   };
 };
 
-export const requestCurrenciesError = (payload) => {
-  console.log('ACTION requestCurrenciesError chamada');
-  return {
-    type: REQUEST_CURRENCIES_ERROR,
-    payload,
-  };
-};
+export const requestCurrenciesError = (payload) => ({
+  type: REQUEST_CURRENCIES_ERROR,
+  payload,
+});
 
 export const sumExpenses = (expenses) => ({
   type: SUM_EXPENSES,

@@ -25,7 +25,7 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       expenses: [...state.expenses, action.payload],
     };
   case REQUEST_CURRENCIES:
-    console.log(action.payload);
+    console.log();
     return {
       ...state,
       currencies: action.payload,
@@ -46,7 +46,7 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       value: action.payload,
     };
   case DELETE_EXPENSES:
-    console.log(action.payload);
+    // console.log(action.payload);
     return {
       ...state,
       expenses: state.expenses.filter((expense) => expense.id !== action.payload),
