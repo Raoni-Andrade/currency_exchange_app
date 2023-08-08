@@ -1,4 +1,4 @@
-<h1>TrybeWallet 💰</h1>  
+<h1>Virtual Wallet Tracker 💰</h1>  
 
 <div>
 <h2>:information_source: About: </h2><p>A virtual wallet to track your expenses with a real-time currency converter, which is possible for you to add, remove or edit expenses and convert your spendings to any desired currency with a real-time exchange rate. An all those informations displayed in a beautiful table.</p>
